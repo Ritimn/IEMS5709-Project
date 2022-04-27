@@ -1,3 +1,31 @@
-docker run --runtime nvidia --privileged --rm -it --env DEV_MODE=1 -p 1883:1883 -p 8080:8080 -p 8554:8554 maskcam/maskcam-beta
+#下载image
+sudo docker pull maskcam/maskcam-beta
 
-docker cp /home/s1155152552/airport.mp4 4a47056e19b4:/opt/maskcam_1.0/
+#运行container
+sudo docker run --runtime nvidia --privileged --rm -it --env DEV_MODE=1 -p 1883:1883 -p 8080:8080 -p 8554:8554 maskcam/maskcam-beta
+
+#进入container
+sudo docker exec -it 4e92ebd810d9 /bin/bash
+
+#将文件从主机拷贝至container
+sudo docker cp /home/s1155152552/airport.mp4 4e92ebd810d9:/opt/maskcam_1.0/
+
+#运行
+'''
+ Examples:
+        \t$ python3 maskcam_run.py
+        \t$ python3 maskcam_run.py file:///absolute/path/to/file.mp4
+        \t$ python3 maskcam_run.py v4l2:///dev/video1
+        \t$ python3 maskcam_run.py argus://0
+
+        Notes:
+        \t - If no URI is provided, will use default-input defined in config_maskcam.txt
+        \t - If a file:///path/file.mp4 is provided, the output will be ./output_file.mp4
+        \t - If the input is a live camera, the output will be consecutive
+        \t   video files under /dev/shm/date_time.mp4
+        \t   according to the time interval defined in output-chunks-duration in config_maskcam.txt.
+        """
+'''
+
+#从container拷贝output文件到主机
+sudo docker cp 4e92ebd810d9:/opt/maskcam_1.0/airport.mp4 /home/s1155152552/output
