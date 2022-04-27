@@ -1,0 +1,3 @@
+docker run --runtime nvidia --privileged --rm -it --env DEV_MODE=1 -p 1883:1883 -p 8080:8080 -p 8554:8554 maskcam/maskcam-beta
+
+docker cp /home/s1155152552/airport.mp4 4a47056e19b4:/opt/maskcam_1.0/
