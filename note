@@ -5,10 +5,10 @@ sudo docker pull maskcam/maskcam-beta
 sudo docker run --runtime nvidia --privileged --rm -it --env DEV_MODE=1 -p 1883:1883 -p 8080:8080 -p 8554:8554 maskcam/maskcam-beta
 
 #进入container
-sudo docker exec -it 4e92ebd810d9 /bin/bash
+sudo docker exec -it 8d3540396256 /bin/bash
 
 #将文件从主机拷贝至container
-sudo docker cp /home/s1155152552/airport.mp4 4e92ebd810d9:/opt/maskcam_1.0/
+sudo docker cp /home/s1155152552/airport.mp4 8d3540396256:/opt/maskcam_1.0/
 
 #运行
 '''
@@ -28,4 +28,4 @@ sudo docker cp /home/s1155152552/airport.mp4 4e92ebd810d9:/opt/maskcam_1.0/
 '''
 
 #从container拷贝output文件到主机
-sudo docker cp 4e92ebd810d9:/opt/maskcam_1.0/airport.mp4 /home/s1155152552/output
+sudo docker cp 8d3540396256:/opt/maskcam_1.0/airport.mp4 /home/s1155152552/output
